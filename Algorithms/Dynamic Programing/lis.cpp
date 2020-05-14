@@ -1,12 +1,15 @@
+//!O(n^2) solution
 #include <bits/stdtr1c++.h>
 using namespace std;
 int findLis(int A[], int n)
 {
+    //lsiArray is used for storing the max LIS till an index i
     int lisArray[n];
     int maximumLISLength = INT_MIN;
 
     for (int i = 0; i < n; i++)
     {
+        //Base case
         lisArray[i] = 1;
         for (int j = 0; j < i; j++)
         {
