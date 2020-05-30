@@ -1,3 +1,4 @@
+//Finding square root of a number using binary search technique
 #include <bits/stdc++.h>
 using namespace std;
 int findSquareRoot(int x)
