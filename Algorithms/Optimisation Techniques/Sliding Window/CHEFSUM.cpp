@@ -11,7 +11,7 @@ void solve()
     lli n = 0;
     cin >> n;
     vector<lli> A(n);
-    lli minimumElement = lli_MAX, minimumIndex = 0;
+    lli minimumElement = INT_MAX, minimumIndex = 0;
     for (lli i = 0; i < n; i++)
     {
         cin >> A[i];
