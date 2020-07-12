@@ -1,20 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int lli;
-lli findCumilative(vector<lli> A)
-{
-    lli n = A.size();
-    lli maxSum = 0, windowSum = 0;
-    for (lli i = 0; i < 3; i++)
-        maxSum += A[i];
-    windowSum = maxSum;
-    for (lli i = 3; i < n; i++)
-    {
-        windowSum = windowSum + A[i] - A[i - 3];
-        maxSum = max(maxSum, windowSum);
-    }
-    return maxSum;
-}
 void solve()
 {
     lli n = 0;
@@ -22,7 +8,21 @@ void solve()
     vector<lli> A(n);
     for (lli i = 0; i < n; i++)
         cin >> A[i];
-    cout << findCumilative(A) << '\n';
+    lli maxResult = INT_MIN;
+    for (lli i = 0; i < n; i++)
+    {
+        lli tempMax = A[i];
+        if (i + 1 >= n)
+            tempMax += A[(i + 1) % n];
+        else
+            tempMax += A[i + 1];
+        if (i + 2 >= n)
+            tempMax += A[(i + 2) % n];
+        else
+            tempMax += A[i + 2];
+        maxResult = max(maxResult, tempMax);
+    }
+    cout << maxResult << '\n';
 }
 int main()
 {
