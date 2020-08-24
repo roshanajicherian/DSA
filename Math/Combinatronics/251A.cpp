@@ -8,25 +8,18 @@ void solve()
     vector<lli> A(n);
     for (lli i = 0; i < n; i++)
         cin >> A[i];
-    lli count = 0;
-    sort(A.begin(), A.end());
+    lli ans = 0;
     for (lli i = 0; i < n; i++)
     {
-        if (i + 2 < n)
-        {
-            for (lli j = i + 2; j < n; j++)
-            {
-                if (abs(A[j] - A[i]) <= d)
-                    count += (j - i - 1);
-            }
-        }
+        lli elementGreater = upper_bound(A.begin(), A.end(), A[i] + d) - A.begin();
+        lli numberOfElements = elementGreater - i - 1;
+        if (numberOfElements > 1)
+            ans += ((numberOfElements) * (numberOfElements - 1)) / 2;
     }
-    cout << count << '\n';
+    cout << ans << '\n';
 }
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
     solve();
     return 0;
 }
